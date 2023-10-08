@@ -5,7 +5,7 @@ import 'package:islami_app/sura_details.dart';
 import 'package:islami_app/sura_model.dart';
 
 class QuranTab extends StatelessWidget {
-  List<String> suraNames = [
+  final List<String> suraNames = [
     "الفاتحه",
     "البقرة",
     "آل عمران",
