@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/hadeeth_model.dart';
 import 'package:islami_app/my_theme_data.dart';
 
@@ -29,7 +30,7 @@ class _AahadeethTabState extends State<AahadeethTab> {
           color: MyThemeData.primaryColor,
         ),
         Text(
-          "الأحاديث",
+          AppLocalizations.of(context)!.ahadeeth,
           textAlign: TextAlign.center,
         ),
         Divider(
@@ -67,11 +68,11 @@ class _AahadeethTabState extends State<AahadeethTab> {
     rootBundle.loadString("assets/files/ahadeth.txt").then((ahadeeth) {
       List<String> ahadeth_list = ahadeeth.split("#");
       for (int i = 0; i < ahadeth_list.length; i++) {
-        String hadeethOne = ahadeth_list[i];
-        List<String> hadethOneLines = hadeethOne.trim().split("\n");
-        String title = hadethOneLines[0];
-        hadethOneLines.removeAt(0);
-        List<String> content = hadethOneLines;
+        String hadeeth = ahadeth_list[i];
+        List<String> hadethLines = hadeeth.trim().split("\n");
+        String title = hadethLines[0];
+        hadethLines.removeAt(0);
+        List<String> content = hadethLines;
         HadeethModel hadeethModel = HadeethModel(title, content);
         all_ahadeeth.add(hadeethModel);
         setState(() {});
