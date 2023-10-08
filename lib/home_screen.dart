@@ -44,29 +44,29 @@ class _HomeScreenState extends State<HomeScreen> {
               index = value;
               setState(() {});
             },
-            items: const [
+            items: [
               BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage("assets/images/quran.png")),
-                  label: "quran",
+                  label: AppLocalizations.of(context)!.quran,
                   backgroundColor: MyThemeData.primaryColor),
               BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage("assets/images/sebha.png")),
-                  label: "sebha",
+                  label: AppLocalizations.of(context)!.sebha,
                   backgroundColor: MyThemeData.primaryColor),
               BottomNavigationBarItem(
                   icon: ImageIcon(
                       AssetImage("assets/images/quran-quran-svgrepo-com.png")),
-                  label: "ahadeeth",
+                  label: AppLocalizations.of(context)!.ahadeeth,
                   backgroundColor: MyThemeData.primaryColor),
               BottomNavigationBarItem(
                   icon: ImageIcon(
                     AssetImage("assets/images/radio.png"),
                   ),
-                  label: "radio",
+                  label: AppLocalizations.of(context)!.radio,
                   backgroundColor: MyThemeData.primaryColor),
               BottomNavigationBarItem(
                   icon: Icon(Icons.settings),
-                  label: "settings",
+                  label: AppLocalizations.of(context)!.settings,
                   backgroundColor: MyThemeData.primaryColor),
             ],
           ),
