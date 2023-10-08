@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 
 import '../providers/my_provider.dart';
 
-class LanguageBottomSheet extends StatelessWidget {
-  const LanguageBottomSheet({super.key});
+class ModeBottomSheet extends StatelessWidget {
+  const ModeBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,20 +18,20 @@ class LanguageBottomSheet extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              provider.changeLanguage("en");
+              provider.changeMode(ThemeMode.light);
               Navigator.pop(context);
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  AppLocalizations.of(context)!.english,
+                  AppLocalizations.of(context)!.light,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: provider.local == "en"
-                          ? MyThemeData.primaryColor
-                          : MyThemeData.darkPrimaryColor),
+                      color: provider.theme == ThemeMode.light
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.primary),
                 ),
-                provider.local == "en"
+                provider.theme == ThemeMode.light
                     ? Icon(
                         Icons.done,
                         color: MyThemeData.primaryColor,
@@ -43,20 +43,20 @@ class LanguageBottomSheet extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              provider.changeLanguage("ar");
+              provider.changeMode(ThemeMode.dark);
               Navigator.pop(context);
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  AppLocalizations.of(context)!.arabic,
+                  AppLocalizations.of(context)!.dark,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: provider.local == "ar"
-                          ? MyThemeData.primaryColor
-                          : MyThemeData.darkPrimaryColor),
+                      color: provider.theme == ThemeMode.dark
+                          ? Theme.of(context).colorScheme.secondary
+                          : Theme.of(context).colorScheme.secondary),
                 ),
-                provider.local == "ar"
+                provider.theme == ThemeMode.dark
                     ? const Icon(
                         Icons.done,
                         color: MyThemeData.primaryColor,

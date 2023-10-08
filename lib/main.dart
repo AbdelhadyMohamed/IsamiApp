@@ -10,8 +10,12 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => MyProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => MyProvider(),
+        ),
+      ],
       child: MyApp(),
     ),
   );
@@ -25,6 +29,7 @@ class MyApp extends StatelessWidget {
     var provider = Provider.of<MyProvider>(context);
 
     return MaterialApp(
+      themeMode: provider.theme,
       locale: Locale(provider.local),
       localizationsDelegates: [
         AppLocalizations.delegate, // Add this line

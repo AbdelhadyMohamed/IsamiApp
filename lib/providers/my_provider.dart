@@ -1,16 +1,16 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class MyProvider extends ChangeNotifier {
   String local = "en";
-  String mode = "light";
+  ThemeMode theme = ThemeMode.light;
 
   changeLanguage(String languageCode) {
     local = languageCode;
     notifyListeners();
   }
 
-  changeMode(String modeCode) {
-    local = modeCode;
+  changeMode(ThemeMode mode) {
+    theme = mode;
     notifyListeners();
   }
 }

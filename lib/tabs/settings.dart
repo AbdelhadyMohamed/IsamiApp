@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islami_app/my_theme_data.dart';
+import 'package:islami_app/bottom_sheets/show_mode_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
 import '../bottom_sheets/show_language_bottom_sheet.dart';
@@ -23,7 +23,10 @@ class _SettingsTabState extends State<SettingsTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(AppLocalizations.of(context)!.language),
+          Text(
+            AppLocalizations.of(context)!.language,
+            style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
+          ),
           InkWell(
             onTap: () {
               showLanguageBottomSheet(context);
@@ -31,18 +34,25 @@ class _SettingsTabState extends State<SettingsTab> {
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 18),
               padding: EdgeInsets.symmetric(horizontal: 18),
-              child: Text(provider.local == "en"
-                  ? AppLocalizations.of(context)!.english
-                  : AppLocalizations.of(context)!.arabic),
+              child: Text(
+                  provider.local == "en"
+                      ? AppLocalizations.of(context)!.english
+                      : AppLocalizations.of(context)!.arabic,
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary)),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: MyThemeData.primaryColor)),
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.onSecondary,
+                  )),
             ),
           ),
           SizedBox(
             height: 18,
           ),
-          Text(AppLocalizations.of(context)!.mode),
+          Text(AppLocalizations.of(context)!.mode,
+              style:
+                  TextStyle(color: Theme.of(context).colorScheme.onSecondary)),
           InkWell(
             onTap: () {
               showThemingBottomSheet();
@@ -50,10 +60,16 @@ class _SettingsTabState extends State<SettingsTab> {
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 18),
               padding: EdgeInsets.symmetric(horizontal: 18),
-              child: Text("Light"),
+              child: Text(
+                  provider.theme == ThemeMode.light
+                      ? AppLocalizations.of(context)!.light
+                      : AppLocalizations.of(context)!.dark,
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSecondary)),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: MyThemeData.primaryColor)),
+                  border: Border.all(
+                      color: Theme.of(context).colorScheme.onSecondary)),
             ),
           ),
         ],
@@ -86,7 +102,7 @@ class _SettingsTabState extends State<SettingsTab> {
         ),
         context: context,
         builder: (context) {
-          return LanguageBottomSheet();
+          return ModeBottomSheet();
         });
   }
 }
