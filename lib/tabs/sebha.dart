@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/my_theme_data.dart';
 
 class SebhaTab extends StatefulWidget {
   SebhaTab({super.key});
@@ -30,12 +29,16 @@ class _SebhaTabState extends State<SebhaTab> {
           ),
           Text(
             "عدد التسبيحات",
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(color: Theme.of(context).colorScheme.onSecondary),
           ),
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Color.fromRGBO(183, 147, 95, 100)),
+              borderRadius: BorderRadius.circular(15),
+              color: Theme.of(context).colorScheme.background,
+            ),
             height: 81,
             width: 69,
             child: Center(
@@ -74,7 +77,7 @@ class _SebhaTabState extends State<SebhaTab> {
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
-                backgroundColor: MyThemeData.primaryColor,
+                backgroundColor: Theme.of(context).colorScheme.background,
               ),
             ),
           ),

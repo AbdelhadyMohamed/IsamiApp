@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/my_theme_data.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/sura_details.dart';
 import 'package:islami_app/sura_model.dart';
 
 class QuranTab extends StatelessWidget {
-  List<String> suraNames = [
+  final List<String> suraNames = [
     "الفاتحه",
     "البقرة",
     "آل عمران",
@@ -129,24 +129,27 @@ class QuranTab extends StatelessWidget {
       child: Column(
         children: [
           Image.asset("assets/images/quran_image.png"),
-          const Divider(
+          Divider(
             thickness: 2,
-            color: MyThemeData.primaryColor,
+            color: Theme.of(context).colorScheme.primary,
             endIndent: 2,
           ),
           Text(
-            "Sura Names",
-            style: Theme.of(context).textTheme.bodyMedium,
+            AppLocalizations.of(context)!.suraName,
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(color: Theme.of(context).colorScheme.secondary),
           ),
-          const Divider(
+          Divider(
             thickness: 2,
-            color: MyThemeData.primaryColor,
+            color: Theme.of(context).colorScheme.primary,
             endIndent: 2,
           ),
           Expanded(
             child: ListView.separated(
               separatorBuilder: (context, index) => Divider(
-                color: MyThemeData.primaryColor,
+                color: Theme.of(context).colorScheme.primary,
                 thickness: 2,
               ),
               itemBuilder: (context, index) {
@@ -158,7 +161,8 @@ class QuranTab extends StatelessWidget {
                   child: Text(
                     suraNames[index],
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(),
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: Theme.of(context).colorScheme.secondary),
                   ),
                 );
               },
