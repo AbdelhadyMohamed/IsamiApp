@@ -7,6 +7,7 @@ import 'package:islami_app/my_theme_data.dart';
 import 'package:islami_app/providers/my_provider.dart';
 import 'package:islami_app/sura_details.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(
@@ -24,14 +25,17 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
+  late MyProvider provider;
+
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<MyProvider>(context);
+    provider = Provider.of<MyProvider>(context);
+    initSharedPref();
 
     return MaterialApp(
       themeMode: provider.theme,
       locale: Locale(provider.local),
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate, // Add this line
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -51,5 +55,17 @@ class MyApp extends StatelessWidget {
       darkTheme: MyThemeData.darkTheme,
       debugShowCheckedModeBanner: false,
     );
+  }
+
+  initSharedPref() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String lang = prefs.getString("language") ?? "en";
+    String theme = prefs.getString("theme") ?? "light";
+    provider.changeLanguage(lang);
+    if (theme == "light") {
+      provider.changeMode(ThemeMode.light);
+    } else {
+      provider.changeMode(ThemeMode.dark);
+    }
   }
 }
