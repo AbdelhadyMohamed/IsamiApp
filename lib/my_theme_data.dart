@@ -25,7 +25,7 @@ class MyThemeData {
           backgroundColor: primaryColor,
           selectedItemColor: darkPrimaryColor,
           unselectedItemColor: primaryColor),
-      iconTheme: IconThemeData(color: darkPrimaryColor, size: 33),
+      iconTheme: const IconThemeData(color: darkPrimaryColor, size: 33),
       textTheme: TextTheme(
         bodyLarge: GoogleFonts.elMessiri(
             fontSize: 30,
